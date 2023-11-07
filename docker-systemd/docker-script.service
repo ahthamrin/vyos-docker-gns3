@@ -1,0 +1,12 @@
+[Unit]
+Description=Custom docker script runner
+After=systemd-remount-fs.service cloud-init.service 
+Before=vyos-configd.service
+
+[Service]
+Type=simple
+ExecStart=/opt/docker-scripts/startup.sh
+Restart=no
+
+[Install]
+WantedBy=vyos.target
