@@ -20,6 +20,10 @@ rm -f unsquashfs/usr/sbin/poweroff
 kern_release=`uname -r`
 cp -rp /lib/modules/${kern_release} unsquashfs/lib/modules
 
+# change vyos default config
+cp vyatta-config.boot.default unsquashfs/opt/vyatta/etc/config.boot.default
+chown 0:0 unsquashfs/opt/vyatta/etc/config.boot.default
+
 # docker scripts
 mkdir -p unsquashfs/opt/docker-scripts
 cp docker-scripts/* unsquashfs/opt/docker-scripts
